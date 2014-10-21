@@ -6,13 +6,20 @@
 	<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 	<%= csrf_meta_tags %>
 	<!-- meta tag for mobile device goes here! -->
+	<!-- says we want the page width to be the device width, useful -->
+	<!-- can decide whether or not user-scalable here -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
 	<%=render 'layouts/header'%>
+	<!-- container has a width: 1024px; max-width: 100%; scales w/ page!!!! -->
 	<div class="container">
-		<%= yield %>
-	</div>
 
+		<div class="row">
+
+			<%= yield %>
+			
+		</div>
+	</div>
 </body>
 </html>
