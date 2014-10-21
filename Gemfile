@@ -26,12 +26,13 @@ gem 'spring',        group: :development
 
 gem 'bootstrap-sass'
 
-group :development, test: do #only use it in dev and test, not production!
+group :development, :test do 
+#only use it in dev and test, not production!
 # Use sqlite3 as the database for Active Record
 	gem 'sqlite3'
 end
 
-grop :production do
+group :production do
 	gem 'pg' #this is postgress
 	gem 'rails_12factor' #specials rails 4 mod
 end
