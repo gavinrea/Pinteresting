@@ -1,20 +1,33 @@
 <div class="jumbotron center">
-	<h1>Welcome to my app!</h1>
+	<h1 class='bigtitle'>Welcome to my app!</h1>
 	<p>
 		<%= link_to "Log in", "#", class: "btn btn-default btn-lg" %>
 		<%= link_to "Sign up", "#", class: "btn btn-primary btn-lg" %>
-	</p>    
+	</p>  
+	<div class = container>
+	<input type="text" class = 'userinputtext'>
+	</div>
 	<div class="container">
 		<div class="row">
-			<div class="col-sm-12 image1">
+			<div class="col-sm-12 image1 slide">
 				<img src="http://placekitten.com/700/300" alt="">
 			</div>
-			<div class="col-sm-12 image2">
+			<div class="col-sm-12 image2 slide">
 				<img src="http://placekitten.com/699/300" alt="">
 			</div>
-			<div class="col-sm-12 image3">
+			<div class="col-sm-12 image3 slide">
 				<img src="http://placekitten.com/701/300" alt="">
 			</div>
 		</div>
 	</div>
+	<!-- here is html for buttons -->
+	<div class="container buttons center">
+      <div class="row ">
+        <div class="btn-group">
+          <button class="next btn btn-warning"> PREV </button>
+          <button class="reset btn btn-info"> RESET </button>
+          <button class="prev btn btn-success"> NEXT </button>
+        </div>
+      </div>
+    </div>
 </div>
