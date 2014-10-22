@@ -23,13 +23,13 @@ var slides, slides_total, slide_current;
 
 // means to execute the code only once the document has finished loading
 document.addEventListener('DOMContentLoaded', function(){
-	slides = document.getElementsByClassName('slide');//get pics
-	slides_total = slides.length;//get num pics
-	slide_current = 0;//start w/ first pic
+	var slides = document.getElementsByClassName('slide');//get pics
+	var slides_total = slides.length;//get num pics
+	var slide_current = 0;//start w/ first pic
 
-	next_button = document.getElementsByClassName('next')[0]
-	prev_button = document.getElementsByClassName('prev')[0]
-	reset_button = document.getElementsByClassName('reset')[0]
+	var next_button = document.getElementsByClassName('next')[0]
+	var prev_button = document.getElementsByClassName('prev')[0]
+	var reset_button = document.getElementsByClassName('reset')[0]
 
 	window.setInterval(function(){// function to set time interval (this will loop)	
 		changePicture(slide_current);// change the picture to the current time		
@@ -60,8 +60,8 @@ document.addEventListener('DOMContentLoaded', function(){
     		else{slide_current = 0};
     	changePicture(slide_current);
 
-    	// track w/ mixpanel
-    	mixpanel.track("next button pushed");
+    	// // track w/ mixpanel
+    	// mixpanel.track("next button pushed");
     });
 
     reset_button.addEventListener('click', function () {
