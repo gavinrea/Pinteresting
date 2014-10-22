@@ -59,7 +59,11 @@ document.addEventListener('DOMContentLoaded', function(){
     	if(slide_current < slides_total-1){slide_current++}
     		else{slide_current = 0};
     	changePicture(slide_current);
+
+    	// track w/ mixpanel
+    	mixpanel.track("next button pushed");
     });
+
     reset_button.addEventListener('click', function () {
     	slide_current = 0;
     	changePicture(slide_current);
