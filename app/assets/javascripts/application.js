@@ -50,6 +50,8 @@ document.addEventListener('DOMContentLoaded', function(){
     }
       // then we call the function that changes the current image we had previously coded
       changePicture(slide_current);
+      // google analytics format (action, thing, blah, event, label, number)
+      ga("send", "event", "slider", "click next", "clicked next button slideshow", 1);
   });
          // First we get the element with class .prev, we want to add an event listener
     // to that element so we can perform a function every time teh element is clicked
