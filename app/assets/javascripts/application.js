@@ -23,17 +23,43 @@ var slides, slides_total, slide_current;
 // means to execute the code only once the document has finished loading
 
 document.addEventListener('DOMContentLoaded', function(){
-	// set up the fButton, bButton and rButton buttons
-	fButton = document.getElementsByClassName('fButton')
-	bButton = document.getElementsByClassName('bButton')
-	rButton = document.getElementsByClassName('rButton')
-	// add event listeners
-	fButton = addEventListener("click", forward, false);
-	bButton = addEventListener("click", backward, false);
-	rButton = addEventListener("click", restart, false);
+	// // set up the fButton, bButton and rButton buttons
+	// fButton = document.getElementsByClassName('fButton')
+	// bButton = document.getElementsByClassName('bButton')
+	// rButton = document.getElementsByClassName('rButton')
+	// // add event listeners
+	// fButton = addEventListener("click", forward, false);
+	// bButton = addEventListener("click", backward, false);
+	// rButton = addEventListener("click", restart, false);
+
+	// First we get the element with class .prev, we want to add an event listener
+    // to that element so we can perform a function every time teh element is clicked
+    document.getElementsByClassName('prev')[0].addEventListener('click', function () {
+      // the idea is to decrease slide_current by one, to show the previous image
+      if(slide_current > 0){
+      	slide_current--;
+      }else{
+        // if the slide_current is less than 0 we want to move to the last image
+        slide_current = (slides_total - 1);
+    }
+      // then we call the function that changes the current image we had previously coded
+      changePicture(slide_current);
+  });
+         // First we get the element with class .prev, we want to add an event listener
+    // to that element so we can perform a function every time teh element is clicked
+    document.getElementsByClassName('next')[0].addEventListener('click', function () {
+    	if(slide_current < slides_total-1){slide_current++};
+    	else{slide_current = 0};
+    	changePicture(slide_current);
+    });
+    document.getElementsByClassName('reset')[0].addEventListener('click', function () {
+    	slide_current = 0;
+    	changePicture(slide_current);
+    });
+
 
 	// get the pictures!
-	slides = document.getElementsByClassName('slides');//use a better class name :)
+	slides = document.getElementsByClassName('slides');//use a better class name :
 	// how many pictures are there?
 	slides_total = slides.length;
 	// let's start with the first picture
@@ -46,34 +72,36 @@ document.addEventListener('DOMContentLoaded', function(){
 		if(slide_current >= (slides_total-1)){
 			slide_current = 0;
 		// otherwise, just go to the next slide
-		}else{
+	}else{
 			slide_current++; //this is an abbreviation for slide_current = slide_current + 1
 		}
 		//log the slide to the console so for confirmation
 		console.log(slide_current);
 		//do this every 3s
-		}, 3000);
+	}, 3000);
 });
-// forward, backward and restart functions
-function forward(){
-	// will only increment forward if not on last slide
-	if(slide_current != (slides_total-1)){ 
-		slide_current += 1
-		changePicture(slide_current)
-	};
-}
-function backward(){
-	// will only increment forward if not on last slide
-	if(slide_current != 0){ 
-		slide_current -= 1
-		changePicture(slide_current)
-	};
-}
-function restart(){
-	// will only increment forward if not on last slide
-	slide_current = 0;
-	changePicture(slide_current)
-}
+
+
+// // forward, backward and restart functions
+// function forward(){
+// 	// will only increment forward if not on last slide
+// 	if(slide_current != (slides_total-1)){ 
+// 		slide_current += 1
+// 		changePicture(slide_current)
+// 	};
+// }
+// function backward(){
+// 	// will only increment forward if not on last slide
+// 	if(slide_current != 0){ 
+// 		slide_current -= 1
+// 		changePicture(slide_current)
+// 	};
+// }
+// function restart(){
+// 	// will only increment forward if not on last slide
+// 	slide_current = 0;
+// 	changePicture(slide_current)
+// }
 
 // helper functino takes a slide as input
 function changePicture(slide){

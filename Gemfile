@@ -26,6 +26,8 @@ gem 'spring',        group: :development
 
 gem 'bootstrap-sass'
 
+gem 'devise', '~>3.4.0'
+
 group :development, :test do 
 #only use it in dev and test, not production!
 # Use sqlite3 as the database for Active Record
