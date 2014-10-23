@@ -17,7 +17,7 @@
 //= require_tree .
 
 //sanity check that js is working
-alert('js is added to application!');
+// alert('js is added to application!');
 //vars for application, global so not inside the DOMContentLoaded function
 var slides, slides_total, slide_current;
 

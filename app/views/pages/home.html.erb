@@ -1,12 +1,9 @@
 <div class="jumbotron center">
 	<h1 class='bigtitle'>Welcome to my app!</h1>
-	
+
 	<% if user_signed_in? %>
-	<!-- diplay normal page stuff -->
-	<p>
-		<%= link_to "Log in", "#", class: "btn btn-default btn-lg" %>
-		<%= link_to "Sign up", "#", class: "btn btn-primary btn-lg" %>
-	</p>  
+	<!-- diplay normal page stuff --> 
+	<p>Welcome to the members area!</p>
 	<div class = container>
 		<input type="text" class = 'userinputtext'>
 	</div>
@@ -34,8 +31,9 @@
 		</div>
 	</div>
 	<% else %>
+	<!-- display login and signup link -->
 	<p>
-		<%= link_to "Log in", new_user_session_path, class: "btn btn-default btn-lg" %>
+		<%= link_to "Log in", new_user_session_path, class: "btn btn-default btn-lg" %> 
 		<%= link_to "Sign up", new_user_registration_path, class: "btn btn-primary btn-lg" %>
 	</p>
 	<% end %>
