@@ -4,22 +4,31 @@
   <thead>
     <tr>
       <th>Description</th>
-      <th colspan="3"></th>
+      <th>User ID</th>
+      <th colspan="3"></th> 
     </tr>
   </thead>
 
   <tbody>
     <% @pins.each do |pin| %>
-      <tr>
-        <td><%= pin.description %></td>
-        <td><%= link_to 'Show', pin %></td>
-        <td><%= link_to 'Edit', edit_pin_path(pin) %></td>
-        <td><%= link_to 'Destroy', pin, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+    <tr>
+      <td><%= pin.description %></td>
+      <td><%= pin.user.try(:email) %></td>      
+      <!-- in this case, will go to pin show path by defalut -->
+      <td><%= link_to 'Show', pin %></td> 
+
+      <% if pin.user == current_user  %>
+      <!-- otherwise, have to specify type of request and pass in pin for id -->
+      <td><%= link_to 'Edit', edit_pin_path(pin) %></td>
+      <td><%= link_to 'Destroy', pin, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <% end %>
+      
+    </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-
+<% if user_signed_in? %>
 <%= link_to 'New Pin', new_pin_path %>
+<% end %>
