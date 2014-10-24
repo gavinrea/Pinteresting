@@ -2,45 +2,49 @@ class PinsController < ApplicationController
   respond_to :html, :xml, :json
   before_action :set_pin, only: [:show, :edit, :update, :destroy]
 
-# lists all pins
-  def index
+def index
     @pins = Pin.all
-    respond_with(@pins)
   end
 
   def show
-    respond_with(@pin)
   end
 
   def new
     @pin = Pin.new
-    respond_with(@pin)
   end
 
   def edit
   end
 
   def create
-    @pin = Pin.new(pin_params) #as you can see adds new
-    @pin.save
-    respond_with(@pin)
+    @pin = Pin.new(pin_params)
+    if @pin.save
+      redirect_to @pin, notice: 'Pin was successfully created.'
+    else
+      render action: 'new' #send us back to the new page to try again (and display flash error messages)
+    end
   end
 
   def update
-    @pin.update(pin_params)
-    respond_with(@pin)
+    if @pin.update(pin_params)
+      redirect_to @pin, notice: 'Pin was successfully updated.'
+    else
+      render action: 'edit'
+    end
   end
 
   def destroy
     @pin.destroy
-    respond_with(@pin)
+    redirect_to pins_url
   end
 
   private
+    # Use callbacks to share common setup or constraints between actions.
     def set_pin
       @pin = Pin.find(params[:id])
     end
 
+    # Never trust parameters from the scary internet, only allow the white list through.
     def pin_params
       params.require(:pin).permit(:description)
     end

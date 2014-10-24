@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   devise_for :users #sets up devise routes
   root 'pages#home'
   get "about" => "pages#about" #creates about_path
+  get "ajax" => "pages#ajax"
 
 
   # The priority is based upon order of creation: first created -> highest priority.

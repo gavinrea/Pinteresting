@@ -16,8 +16,6 @@
 //= require turbolinks
 //= require_tree .
 
-//sanity check that js is working
-// alert('js is added to application!');
 //vars for application, global so not inside the DOMContentLoaded function
 var slides, slides_total, slide_current;
 
@@ -111,5 +109,31 @@ function changePicture(slide){
 	slides[slide].style.display = 'block';
 
 };
+
+function ajax() {
+    var xmlhttp;
+ 
+    xmlhttp = new XMLHttpRequest();// has 3 properties, 
+ // onreadystatechange() which hold a function
+ // readyState = status of http request 0-4
+ // status = codes ie 404, etc.
+    xmlhttp.onreadystatechange = function() {
+        if (xmlhttp.readyState == 4 ) { // means request has been completed
+           if(xmlhttp.status == 200){ //OK status
+            // here we replace the inner HTML of tag with response class with xmlhttp's response Text
+               document.getElementById("response").innerHTML = xmlhttp.responseText;
+           }
+           else if(xmlhttp.status == 400) {//page not found status
+              alert('There was an error 400'); 
+           }
+           else {
+               alert('something else other than 200 was returned'); //bad, should not be possible
+           }
+        }
+    }
+ 
+    xmlhttp.open("GET", "/ajax", true);//specifies type of request, url and if it is asynchronous
+    xmlhttp.send(); //sends request to server (takes a string if post request)
+}
 
 

@@ -7,4 +7,8 @@ class PagesController < ApplicationController
   def about
   	
   end
+
+  def ajax
+  	render partial: 'ajax', formats: :html #specifies format to be sent as html, not json or xml
+  end
 end
