@@ -1,5 +1,6 @@
 <p id="notice"><%= notice %></p>
-
+<!-- similar to link to, will auto create and image tag in the html -->
+<%= image_tag @pin.image.url(:medium) %>
 <p>
 	<strong>Description:</strong>
 	<%= @pin.description %>
