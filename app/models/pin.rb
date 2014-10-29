@@ -2,11 +2,7 @@ class Pin < ActiveRecord::Base
 	belongs_to :user
 	# added for paperclip gem
 	#styles will create two versions, a medium and thumbnail:
-	has_attached_file :image, :styles => { :medium => "300x300>", :thumb => "100x100>" }
-	validates_attachment_content_type :image, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
+	has_attached_file :image, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :url => ":s3_domain_url"
+	validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
 
-
-
-	validates :image, presence: true
-	validates :description, presence: true
 end
