@@ -1,11 +1,10 @@
 class PinsController < ApplicationController
-  respond_to :html, :xml, :json
   before_action :set_pin, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, except: [:index, :show]
   before_action :correct_user, only: [:edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:index, :show]
 
   def index
-    @pins = Pin.all
+    @pins = Pin.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 50)
   end
 
   def show
@@ -23,7 +22,7 @@ class PinsController < ApplicationController
     if @pin.save
       redirect_to @pin, notice: 'Pin was successfully created.'
     else
-      render action: 'new' #send us back to the new page to try again (and display flash error messages)
+      render action: 'new'
     end
   end
 
@@ -36,10 +35,8 @@ class PinsController < ApplicationController
   end
 
   def destroy
-    if @pin.user == current_user
-      @pin.destroy
-      redirect_to pins_url
-    end
+    @pin.destroy
+    redirect_to pins_url
   end
 
   private
@@ -48,14 +45,13 @@ class PinsController < ApplicationController
       @pin = Pin.find(params[:id])
     end
 
-     def correct_user
+    def correct_user
       @pin = current_user.pins.find_by(id: params[:id])
       redirect_to pins_path, notice: "Not authorized to edit this pin" if @pin.nil?
     end
+
     # Never trust parameters from the scary internet, only allow the white list through.
-    # what you allow user to update in forms
     def pin_params
-      params.require(:pin).permit(:description, :image, :image_file_name)
-    
+      params.require(:pin).permit(:description, :image)
     end
 end
