@@ -56,5 +56,6 @@ class PinsController < ApplicationController
     # what you allow user to update in forms
     def pin_params
       params.require(:pin).permit(:description, :image, :image_file_name)
+    
     end
 end
