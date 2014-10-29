@@ -38,6 +38,8 @@ group :development, :test do
 	gem 'sqlite3'
 end
 
+
+
 group :production do
 	gem 'pg' #this is postgress
 	gem 'rails_12factor' #specials rails 4 mod
