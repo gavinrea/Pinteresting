@@ -11,10 +11,15 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery.turbolinks
 //= require jquery_ujs
 //= require bootstrap
 //= require turbolinks
+// load all the other files in thsi folder
 //= require_tree .
+//= require masonry/jquery.masonry
+
+//make sure all code is after this header, and no blank spaces between header and top
 
 //vars for application, global so not inside the DOMContentLoaded function
 var slides, slides_total, slide_current;
