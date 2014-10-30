@@ -28,9 +28,7 @@ gem 'bootstrap-sass'
 
 gem 'devise', '~>3.4.0'
 
-gem 'paperclip', github: 'thoughtbot/paperclip'#direct link to repo fixes problems!
-
-gem 'aws-sdk', '~> 1.57.0' #for amazon web services
+gem 'paperclip', github: 'thoughtbot/paperclip'
 
 group :development, :test do 
 #only use it in dev and test, not production!
